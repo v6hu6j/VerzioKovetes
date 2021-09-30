@@ -48,13 +48,15 @@ namespace UserMaintenance
 
             using (StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
             {
-                foreach (var u in users)
+                for (int i = 0; i < users.Count; i++)
                 {
-                    sw.Write(u.FullName);
-                    sw.Write(';');
-                    sw.Write(u.ID);
-                    sw.Write("\n");
+                    sw.WriteLine(users[i].ID.ToString());
+                    sw.WriteLine(users[i].FullName.ToString());
                 }
+
+
+                sw.Dispose();
+                sw.Close();
             }
         }
     }
