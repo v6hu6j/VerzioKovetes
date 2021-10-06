@@ -102,8 +102,9 @@ namespace week04
             headerRange.Interior.Color = Color.LightBlue;
             headerRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
 
-            Excel.Range fullrange = xlSheet.get_Range(GetCell(1, 1), GetCell(1, headers.Length));
-            fullrange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
+            int lastrowID = xlSheet.UsedRange.Rows.Count;
+            Excel.Range fullRange = xlSheet.get_Range(GetCell(lastrowID, 1), GetCell(1, headers.Length));
+            fullRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
 
             Excel.Range firstCRange = xlSheet.get_Range(GetCell(2, 1), GetCell(Flats.Count, 1));
             firstCRange.Font.Bold = true;
