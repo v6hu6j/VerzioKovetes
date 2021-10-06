@@ -33,7 +33,7 @@ namespace week04
                 xlWB = xlApp.Workbooks.Add(Missing.Value);
 
                 xlSheet = xlWB.ActiveSheet;
-                //CreateTable(); // Ennek megírása a következő feladatrészben következik
+                CreateTable(); // Ennek megírása a következő feladatrészben következik
 
                 xlApp.Visible = true;
                 xlApp.UserControl = true;
