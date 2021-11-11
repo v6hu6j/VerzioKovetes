@@ -1,4 +1,5 @@
-﻿using gyak7.Entities;
+﻿using gyak7.Abstractions;
+using gyak7.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,10 +14,10 @@ namespace gyak7
 {
     public partial class Form1 : Form
     {
-        private List<Ball> _balls = new List<Ball>();
-        private BallFactory _factory;
+        private List<Toy> _toys = new List<Toy>();
+        private IToyFactory _factory;
 
-        public BallFactory Factory
+        public IToyFactory Factory
         {
             get { return _factory; }
             set { _factory = value; }
@@ -30,27 +31,27 @@ namespace gyak7
 
         private void createTimer_Tick(object sender, EventArgs e)
         {
-            var ball = Factory.CreateNew();
-            _balls.Add(ball);
-            ball.Left = -ball.Width;
-            mainPanel.Controls.Add(ball);
+            var toy = Factory.CreateNew();
+            _toys.Add(toy);
+            toy.Left = -toy.Width;
+            mainPanel.Controls.Add(toy);
         }
 
         private void conveyorTimer_Tick(object sender, EventArgs e)
         {
             var maxPosition = 0;
-            foreach (var ball in _balls)
+            foreach (var ball in _toys)
             {
-                ball.MoveBall();
+                ball.MoveToy();
                 if (ball.Left > maxPosition)
                     maxPosition = ball.Left;
             }
 
             if (maxPosition > 1000)
             {
-                var oldestBall = _balls[0];
+                var oldestBall = _toys[0];
                 mainPanel.Controls.Remove(oldestBall);
-                _balls.Remove(oldestBall);
+                _toys.Remove(oldestBall);
             }
         }
     }
