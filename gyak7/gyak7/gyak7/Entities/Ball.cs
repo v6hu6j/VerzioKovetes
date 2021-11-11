@@ -11,13 +11,16 @@ namespace gyak7.Entities
 {
     public class Ball : Toy
     {
-        public Ball()
+        public SolidBrush BallColor { get; private set; }
+        public Ball(Color color)
         {
             AutoSize = false;
             Width = 50;
             Height = Width;
             Paint += Ball_Paint;
+            BallColor = new SolidBrush(color);
         }
+
 
         private void Ball_Paint(object sender, PaintEventArgs e)
         {
@@ -26,7 +29,7 @@ namespace gyak7.Entities
 
         protected override void DrawImage(Graphics g)
         {
-            g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
+            g.FillEllipse(BallColor, 0, 0, Width, Height);
         }
         public void MoveBall()
         {
