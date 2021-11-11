@@ -34,7 +34,7 @@ namespace gyak7
             if (_nextToy == null)
                 Controls.Remove(_nextToy);
             _nextToy = Factory.CreateNew();
-            _nextToy.Top = label1.Top + label1.Height + 100;
+            _nextToy.Top = label1.Top + label1.Height + 20;
             _nextToy.Left = label1.Left;
             Controls.Add(_nextToy);
         }
@@ -79,6 +79,17 @@ namespace gyak7
         private void button2_Click(object sender, EventArgs e)
         {
             Factory = new BallFactory();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            var button = (Button)sender;
+            var colorPicker = new ColorDialog();
+
+            colorPicker.Color = button.BackColor;
+            if (colorPicker.ShowDialog() != DialogResult.OK)
+                return;
+            button.BackColor = colorPicker.Color;
         }
     }
 }
