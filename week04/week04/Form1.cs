@@ -70,7 +70,7 @@ namespace week04
 
             for (int i = 1; i < headers.Length; i++)
             {
-                xlSheet.Cells[1, i] = headers[i - 1];
+                xlSheet.Cells[1, i + 1] = headers[i];
 
             }
 
@@ -106,11 +106,11 @@ namespace week04
             Excel.Range fullRange = xlSheet.get_Range(GetCell(lastrowID, 1), GetCell(1, headers.Length));
             fullRange.BorderAround2(Excel.XlLineStyle.xlContinuous, Excel.XlBorderWeight.xlThick);
 
-            Excel.Range firstCRange = xlSheet.get_Range(GetCell(2, 1), GetCell(Flats.Count, 1));
+            Excel.Range firstCRange = xlSheet.get_Range(GetCell(2, 1), GetCell(1 + Flats.Count, 1));
             firstCRange.Font.Bold = true;
             firstCRange.Interior.Color = Color.LightYellow;
 
-            Excel.Range lastCrange = xlSheet.get_Range(GetCell(2, headers.Length), GetCell(Flats.Count, headers.Length));
+            Excel.Range lastCrange = xlSheet.get_Range(GetCell(2, headers.Length), GetCell(1 + Flats.Count, headers.Length));
             lastCrange.Interior.Color = Color.LightGreen;
 
         }
