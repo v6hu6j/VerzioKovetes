@@ -16,11 +16,27 @@ namespace gyak7
     {
         private List<Toy> _toys = new List<Toy>();
         private IToyFactory _factory;
+        private Toy _nextToy;
+        
 
         public IToyFactory Factory
         {
             get { return _factory; }
-            set { _factory = value; }
+            set 
+            { 
+                _factory = value;
+                DisplayNext();
+            }
+        }
+
+        private void DisplayNext() //panel alatt jelenik meg, nem tudom hogy kell előrébb hozni eggyel
+        {
+            if (_nextToy == null)
+                Controls.Remove(_nextToy);
+            _nextToy = Factory.CreateNew();
+            _nextToy.Top = label1.Top + label1.Height + 100;
+            _nextToy.Left = label1.Left;
+            Controls.Add(_nextToy);
         }
 
         public Form1()
@@ -53,6 +69,16 @@ namespace gyak7
                 mainPanel.Controls.Remove(oldestBall);
                 _toys.Remove(oldestBall);
             }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Factory = new CarFactory();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            Factory = new BallFactory();
         }
     }
 }
