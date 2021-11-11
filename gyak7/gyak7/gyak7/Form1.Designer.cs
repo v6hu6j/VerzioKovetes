@@ -37,9 +37,10 @@ namespace gyak7
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(0, 12);
+            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mainPanel.Location = new System.Drawing.Point(0, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(801, 426);
+            this.mainPanel.Size = new System.Drawing.Size(800, 450);
             this.mainPanel.TabIndex = 0;
             // 
             // createTimer
