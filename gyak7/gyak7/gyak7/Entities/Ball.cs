@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gyak7.Abstractions;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Windows.Forms;
 
 namespace gyak7.Entities
 {
-    public class Ball : Label
+    public class Ball : Toy
     {
         public Ball()
         {
@@ -23,7 +24,7 @@ namespace gyak7.Entities
             DrawImage(e.Graphics);
         }
 
-        protected void DrawImage(Graphics g)
+        protected override void DrawImage(Graphics g)
         {
             g.FillEllipse(new SolidBrush(Color.Blue), 0, 0, Width, Height);
         }
